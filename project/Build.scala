@@ -6,9 +6,9 @@ object BuildSettings {
     organization := "com.softwaremill.scala-macro-aop",
     version := "1.0.0",
     scalacOptions ++= Seq(),
-    scalaVersion := "2.10.2",
+    scalaVersion := "2.11.8",
     resolvers += Resolver.sonatypeRepo("snapshots"),
-    addCompilerPlugin("org.scala-lang.plugins" % "macro-paradise" % "2.0.0-SNAPSHOT" cross CrossVersion.full)
+    addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.0" cross CrossVersion.full)
   )
 }
 

@@ -1,6 +1,6 @@
 package com.softwaremill.aop
 
-import scala.reflect.macros.Context
+import scala.reflect.macros.whitebox.Context
 
 object delegateMacro {
   def impl(c: Context)(annottees: c.Expr[Any]*): c.Expr[Any] = {
@@ -51,7 +51,7 @@ object delegateMacro {
         case DefDef(_, n, _, _, _, _) => Some(n)
         case _ => None
       }).toSet
-      val methodsToAdd = allMethodsInDelegate.filter(method => !existingMethods.contains(method.name))
+      val methodsToAdd = allMethodsInDelegate.filter(method => !existingMethods.contains(method.name.toTermName))
 
       val newMethods = for {
         methodToAdd <- methodsToAdd
